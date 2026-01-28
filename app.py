@@ -297,7 +297,7 @@ def load_lottie_url(url: str):
 @st.cache_resource
 def load_model():
     try:
-        model = tf.keras.models.load_model('/mnt/user-data/uploads/mobilenet_final_model.h5')
+        model = tf.keras.models.load_model('mobilenet_final_model.h5')
         return model
     except Exception as e:
         st.error(f"Error loading model: {e}")
@@ -306,7 +306,7 @@ def load_model():
 @st.cache_data
 def load_class_names():
     try:
-        with open('/mnt/user-data/uploads/class_names.json', 'r') as f:
+        with open('class_names.json', 'r') as f:
             data = json.load(f)
         return data['class_names']
     except Exception as e:
