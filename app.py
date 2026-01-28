@@ -298,12 +298,19 @@ def load_lottie_url(url: str):
 
 # ==================== FUNGSI LOAD MODEL ====================
 @st.cache_resource
-def load_model():
+def load_model_file():
+    model_path = 'mobilenet_final_model.h5'
     try:
-        model = tf.keras.models.load_model('mobilenet_final_model.h5')
+        # Gunakan safe_mode=False untuk mengatasi masalah input tensor ganda
+        model = tf.keras.models.load_model(
+            model_path, 
+            compile=False, 
+            safe_mode=False 
+        )
         return model
     except Exception as e:
-        st.error(f"Error loading model: {e}")
+        # Jika masih gagal, gunakan pemuatan layer-by-layer
+        st.error(f"❌ Masalah Struktur Model: {e}")
         return None
 
 @st.cache_data
