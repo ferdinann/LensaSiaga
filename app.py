@@ -550,7 +550,7 @@ def main():
     
     with tab1:
         # Load model
-        model = load_model()
+        model = load_model_file()
         class_names = load_class_names()
         
         if model is None or not class_names:
