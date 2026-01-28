@@ -299,7 +299,7 @@ def load_lottie_url(url: str):
 # ==================== FUNGSI LOAD MODEL ====================
 @st.cache_resource
 def load_model_file():
-    model_path = 'mobilenet_final_model.h5'
+    model_path = 'mobilenet_final_model.keras'
     try:
         # Gunakan safe_mode=False untuk mengatasi masalah input tensor ganda
         model = tf.keras.models.load_model(
